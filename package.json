@@ -14,7 +14,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "nodemon server/index.js --ignore build",
+    "deploy": "forever start server/index.js --ignore build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   }
