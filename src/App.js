@@ -22,7 +22,6 @@ class App extends Component {
     checked: false
   };
   handleChange = ({ target: { name, value } }) => {
-    console.log("name, value: ", name, value);
     this.setState({ [name]: value });
   };
   handleClickOpen = () => {
@@ -36,13 +35,20 @@ class App extends Component {
     }
     this.setState({ open: false });
   };
+  completeTodo = i => {
+    let { todos } = this.state;
+    let copy = todos.slice();
+    copy[i].complete = !copy[i].complete;
+    this.setState({ todos: copy });
+    ls.setObject("todos", copy);
+  };
   submit = e => {
     e.preventDefault();
     let { todos, todo, date_time, checked } = this.state;
     if (!checked) {
       date_time = new Date();
     }
-    let newTodos = [...todos, { todo: todo, date_time }];
+    let newTodos = [...todos, { todo: todo, date_time, complete: false }];
     this.setState({
       todos: newTodos,
       todo: "",
@@ -70,7 +76,8 @@ class App extends Component {
     let todos = this.state.todos.map((c, i) => (
       <Card
         style={{ width: "50vw", margin: "50px auto", padding: "50px" }}
-        onClick={() => this.deleteTodo(i)}
+        onClick={() => this.completeTodo(i)}
+        onDoubleClick={() => this.deleteTodo(i)}
         key={i}
       >
         <div
@@ -79,7 +86,10 @@ class App extends Component {
             justifyContent: "space-between"
           }}
         >
-          <span>{c.todo}</span> <span>{formatDate(new Date(c.date_time))}</span>
+          <span style={{ textDecoration: c.complete ? "line-through" : "" }}>
+            {c.todo}
+          </span>{" "}
+          <span>{formatDate(new Date(c.date_time))}</span>
         </div>
       </Card>
     ));
@@ -95,7 +105,7 @@ class App extends Component {
             color="primary"
             aria-label="Add"
             onClick={this.handleClickOpen}
-            style={{ position: "absolute", right: "5vh", bottom: "5vh" }}
+            style={{ position: "fixed", right: "5vh", bottom: "5vh" }}
           >
             <AddIcon />
           </Button>
