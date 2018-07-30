@@ -11,17 +11,20 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import Button from "@material-ui/core/Button";
 import AddIcon from "@material-ui/icons/Add";
 import Card from "@material-ui/core/Card";
+import Checkbox from "@material-ui/core/Checkbox";
 
 class App extends Component {
   state = {
     todos: [],
     todo: "",
-    date_time: "2018-07-01T01:01",
-    open: false
+    date_time: "",
+    open: false,
+    checked: false
   };
-  handleChange = ({ target: { name, value } }) =>
+  handleChange = ({ target: { name, value } }) => {
+    console.log("name, value: ", name, value);
     this.setState({ [name]: value });
-
+  };
   handleClickOpen = () => {
     this.setState({ open: true });
   };
@@ -35,7 +38,10 @@ class App extends Component {
   };
   submit = e => {
     e.preventDefault();
-    let { todos, todo, date_time } = this.state;
+    let { todos, todo, date_time, checked } = this.state;
+    if (!checked) {
+      date_time = new Date();
+    }
     let newTodos = [...todos, { todo: todo, date_time }];
     this.setState({
       todos: newTodos,
@@ -113,17 +119,27 @@ class App extends Component {
                 value={this.state.todo}
                 label="New Todo"
               />
-              <TextField
-                id="datetime-local"
-                label="Reminder?"
-                type="datetime-local"
-                name="date_time"
-                value={this.state.date_time}
-                onChange={this.handleChange}
-                InputLabelProps={{
-                  shrink: true
-                }}
+              <br />
+              Add Reminder:
+              <Checkbox
+                checked={this.state.checked}
+                name="checked"
+                label="Add reminder?"
+                onChange={e => this.setState({ checked: !this.state.checked })}
               />
+              <br />
+              {this.state.checked ? (
+                <TextField
+                  id="datetime-local"
+                  type="datetime-local"
+                  name="date_time"
+                  value={this.state.date_time}
+                  onChange={this.handleChange}
+                  InputLabelProps={{
+                    shrink: true
+                  }}
+                />
+              ) : null}
             </DialogContent>
             <DialogActions>
               <Button onClick={this.handleClose} color="primary">
