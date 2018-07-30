@@ -3,30 +3,62 @@
   "name": "A todo PWA",
   "icons": [
     {
-      "src": "favicon.ico",
+      "src": "/favicon.ico",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     },
     {
+      "src": "/android-chrome-192x192.png",
       "sizes": "192x192",
-      "type": "image/png",
-      "src": "android-chrome-192x192.png"
+      "type": "image/png"
     },
     {
+      "src": "/android-chrome-512x512.png",
       "sizes": "512x512",
-      "type": "image/png",
-      "src": "android-chrome-512x512.png"
+      "type": "image/png"
     },
-    { "sizes": "icon", "type": "image/png", "src": "apple-touch-icon.png" },
-    { "sizes": "16x16", "type": "image/png", "src": "favicon-16x16.png" },
-    { "sizes": "32x32", "type": "image/png", "src": "favicon-32x32.png" },
-    { "sizes": "144x144", "type": "image/png", "src": "mstile-144x144.png" },
-    { "sizes": "150x150", "type": "image/png", "src": "mstile-150x150.png" },
-    { "sizes": "310x150", "type": "image/png", "src": "mstile-310x150.png" },
-    { "sizes": "310x310", "type": "image/png", "src": "mstile-310x310.png" },
-    { "sizes": "70x70", "type": "image/png", "src": "mstile-70x70.png" }
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/mstile-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src": "/mstile-150x150.png",
+      "sizes": "150x150",
+      "type": "image/png"
+    },
+    {
+      "src": "/mstile-310x150.png",
+      "sizes": "310x150",
+      "type": "image/png"
+    },
+    {
+      "src": "/mstile-310x310.png",
+      "sizes": "310x310",
+      "type": "image/png"
+    },
+    {
+      "src": "/mstile-70x70.png",
+      "sizes": "70x70",
+      "type": "image/png"
+    }
   ],
-  "start_url": "/",
+  "start_url": "./index.html",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff"
