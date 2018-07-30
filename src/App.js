@@ -53,7 +53,8 @@ class App extends Component {
       todos: newTodos,
       todo: "",
       date_time: "",
-      open: false
+      open: false,
+      checked: false
     });
     ls.setObject("todos", newTodos);
   };
